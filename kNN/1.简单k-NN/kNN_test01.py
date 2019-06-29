@@ -18,7 +18,7 @@ def createDataSet():
 	#四组二维特征
 	group = np.array([[1,101],[5,89],[108,5],[115,8]])
 	#四组特征的标签
-	labels = ['爱情片','爱情片','动作片','动作片']
+	labels = ['爱情片','爱情片','动作片','动作片'] # ['A','A','B','B']
 	return group, labels
 
 """
@@ -39,13 +39,13 @@ Modify:
 		Use list comprehension and Counter to simplify code
 	2017-07-13
 """
-def classify0(inx, dataset, labels, k):
+def classify0(inx, dataset, labels, k):#(测试集，训练集，标签，距离最小的k个点)
 	# 计算距离
-	dist = np.sum((inx - dataset)**2, axis=1)**0.5
+	dist = np.sum((inx - dataset)**2, axis=1)**0.5 #平方和再开方
 	# k个最近的标签
-	k_labels = [labels[index] for index in dist.argsort()[0 : k]]
+	k_labels = [labels[index] for index in dist.argsort()[0 : k]] #距离从小到大排序，取出前k个数据的标签
 	# 出现次数最多的标签即为最终类别
-	label = collections.Counter(k_labels).most_common(1)[0][0]
+	label = collections.Counter(k_labels).most_common(1)[0][0] #k_labels里取同类标签多的标签
 	return label
 
 if __name__ == '__main__':
