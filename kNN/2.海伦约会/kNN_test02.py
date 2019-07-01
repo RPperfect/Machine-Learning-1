@@ -183,7 +183,7 @@ Returns:
 Modify:
 	2017-03-24
 """
-def autoNorm(dataSet):
+def autoNorm(dataSet): #不同特征之间数据差别很大，归一化是将不同特征的数据进行归一化，划为等级0~1之间，防止误差
 	#获得数据的最小值
 	minVals = dataSet.min(0)
 	maxVals = dataSet.max(0)
@@ -198,7 +198,7 @@ def autoNorm(dataSet):
 	#除以最大和最小值的差,得到归一化数据
 	normDataSet = normDataSet / np.tile(ranges, (m, 1))
 	#返回归一化数据结果,数据范围,最小值
-	return normDataSet, ranges, minVals
+	return normDataSet, ranges, minVals #归一化后的特征矩阵  数据范围  数据最小值
 
 
 """
@@ -225,7 +225,7 @@ def datingClassTest():
 	#获得normMat的行数
 	m = normMat.shape[0]
 	#百分之十的测试数据的个数
-	numTestVecs = int(m * hoRatio)
+	numTestVecs = int(m * hoRatio) #10%m 假如1000个数据，取100个数据进行测试
 	#分类错误计数
 	errorCount = 0.0
 
