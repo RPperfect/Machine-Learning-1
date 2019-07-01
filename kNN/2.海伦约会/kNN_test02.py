@@ -97,7 +97,7 @@ def file2matrix(filename):
         elif listFromLine[-1] == 'largeDoses':
             classLabelVector.append(3)
         index += 1
-    return returnMat, classLabelVector
+    return returnMat, classLabelVector # 解析文件内容，返回前三列数据特征矩阵returnMat和列向量标签classLabelVector
 
 """
 函数说明:可视化数据
